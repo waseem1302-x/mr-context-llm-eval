@@ -1,0 +1,61 @@
+{
+  "scene_id": "scene_09_lab",
+  "domain": "lab bench",
+  "task": "Find the microscope slide box on the lab bench.",
+  "objects": [
+    {
+      "name": "microscope slide box",
+      "x": 0.05,
+      "y": 0.05,
+      "z": 0.45,
+      "distance_m": 0.46,
+      "depth_layer": "near",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "microscope",
+      "x": -0.35,
+      "y": 0.15,
+      "z": 0.6,
+      "distance_m": 0.71,
+      "depth_layer": "near",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "pipette rack",
+      "x": 0.35,
+      "y": 0.05,
+      "z": 0.75,
+      "distance_m": 0.83,
+      "depth_layer": "mid",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "beaker",
+      "x": -0.15,
+      "y": 0.05,
+      "z": 1.05,
+      "distance_m": 1.06,
+      "depth_layer": "mid",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "centrifuge",
+      "x": 0.5,
+      "y": 0.1,
+      "z": 1.9,
+      "distance_m": 1.97,
+      "depth_layer": "far",
+      "occluded": false,
+      "gaze_target": true
+    }
+  ],
+  "user_query": "Where is the microscope slide box and what is next to it?",
+  "conversation_history": [],
+  "paired_with": "scene_07_lab",
+  "paired_change": "gaze target changed"
+}

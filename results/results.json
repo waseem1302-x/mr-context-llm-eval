@@ -1,0 +1,1985 @@
+{
+  "summary": {
+    "n_scenes": 12,
+    "backend": "mock",
+    "model": "mock-deterministic-v1",
+    "date": "2026-11-27",
+    "mean_groundedness_blind": 0.278,
+    "mean_groundedness_context": 1.0,
+    "mean_hallucination_blind": 0.723,
+    "mean_hallucination_context": 0.0,
+    "pairs_checked": 8,
+    "pairs_context_answer_changed": 7,
+    "pairs_blind_answer_changed": 0
+  },
+  "pairs": [
+    {
+      "a": "scene_01_desk",
+      "b": "scene_02_desk",
+      "change": "blue mug moved near to far",
+      "context_answer_changed": true,
+      "blind_answer_changed": false
+    },
+    {
+      "a": "scene_01_desk",
+      "b": "scene_03_desk",
+      "change": "blue mug removed",
+      "context_answer_changed": true,
+      "blind_answer_changed": false
+    },
+    {
+      "a": "scene_04_kitchen",
+      "b": "scene_05_kitchen",
+      "change": "red kettle occluded",
+      "context_answer_changed": true,
+      "blind_answer_changed": false
+    },
+    {
+      "a": "scene_04_kitchen",
+      "b": "scene_06_kitchen",
+      "change": "red kettle removed",
+      "context_answer_changed": true,
+      "blind_answer_changed": false
+    },
+    {
+      "a": "scene_07_lab",
+      "b": "scene_08_lab",
+      "change": "pipette rack swapped for test tube rack",
+      "context_answer_changed": true,
+      "blind_answer_changed": false
+    },
+    {
+      "a": "scene_07_lab",
+      "b": "scene_09_lab",
+      "change": "gaze target changed",
+      "context_answer_changed": true,
+      "blind_answer_changed": false
+    },
+    {
+      "a": "scene_10_office",
+      "b": "scene_11_office",
+      "change": "desk plant swapped for desk lamp",
+      "context_answer_changed": false,
+      "blind_answer_changed": false
+    },
+    {
+      "a": "scene_10_office",
+      "b": "scene_12_office",
+      "change": "gaze target changed",
+      "context_answer_changed": true,
+      "blind_answer_changed": false
+    }
+  ],
+  "rows": [
+    {
+      "scene_id": "scene_01_desk",
+      "domain": "desk",
+      "query": "Where is the blue mug and what is next to it?",
+      "blind": {
+        "answer": "The blue mug is near the notebook and the phone. The blue mug is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "blue mug",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "blue mug",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "blue mug",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "blue mug",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "blue mug here",
+            "anchor_object": "blue mug",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The blue mug is near the laptop, in the near depth layer. The laptop is the closest visible object to it.",
+        "spatial_claims": [
+          {
+            "subject": "blue mug",
+            "relation": "near",
+            "object": "laptop"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "blue mug",
+              "relation": "near",
+              "object": "laptop"
+            },
+            "correct": true,
+            "reason": "euclidean 0.43 m, near needs <= 0.80 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "blue mug (near)",
+            "anchor_object": "blue mug",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "blue mug",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "laptop",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "desk lamp",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "pen holder",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "book stack",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 2,
+          "mentioned_present": 2,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_02_desk",
+      "domain": "desk",
+      "query": "Where is the blue mug and what is next to it?",
+      "blind": {
+        "answer": "The blue mug is near the notebook and the phone. The blue mug is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "blue mug",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "blue mug",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "blue mug",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "blue mug",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "blue mug here",
+            "anchor_object": "blue mug",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The blue mug is far from the book stack, in the far depth layer. The book stack is the closest visible object to it.",
+        "spatial_claims": [
+          {
+            "subject": "blue mug",
+            "relation": "far",
+            "object": "book stack"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "blue mug",
+              "relation": "far",
+              "object": "book stack"
+            },
+            "correct": true,
+            "reason": "euclidean 1.08 m, far needs >= 1.00 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "blue mug (far)",
+            "anchor_object": "blue mug",
+            "depth_layer": "far",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "blue mug",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "laptop",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "desk lamp",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "pen holder",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "book stack",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 2,
+          "mentioned_present": 2,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_03_desk",
+      "domain": "desk",
+      "query": "Where is the blue mug and what is next to it?",
+      "blind": {
+        "answer": "The blue mug is near the notebook and the phone. The blue mug is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "blue mug",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "blue mug",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "blue mug",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "subject blue mug not in scene"
+          },
+          {
+            "claim": {
+              "subject": "blue mug",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "subject blue mug not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "blue mug here",
+            "anchor_object": "blue mug",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.0,
+          "hallucination_rate": 1.0,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 0,
+          "hallucinated_objects": [
+            "blue mug",
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [
+            "blue mug"
+          ],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "There is no blue mug in this scene. I cannot point to it, and no UI element is shown for it.",
+        "spatial_claims": [],
+        "spatial_checks": [],
+        "ui_schema": [],
+        "gate_decisions": [
+          {
+            "object": "laptop",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "desk lamp",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "pen holder",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "book stack",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 0,
+          "spatial_correct": 0,
+          "mentioned_total": 0,
+          "mentioned_present": 0,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 0,
+          "ui_depth_layers": 0,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_04_kitchen",
+      "domain": "kitchen",
+      "query": "Where is the red kettle and what is next to it?",
+      "blind": {
+        "answer": "The red kettle is near the notebook and the phone. The red kettle is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "red kettle",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "red kettle",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "red kettle",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "red kettle",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "red kettle here",
+            "anchor_object": "red kettle",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The red kettle is near the stove, in the near depth layer. The stove is the closest visible object to it.",
+        "spatial_claims": [
+          {
+            "subject": "red kettle",
+            "relation": "near",
+            "object": "stove"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "red kettle",
+              "relation": "near",
+              "object": "stove"
+            },
+            "correct": true,
+            "reason": "euclidean 0.38 m, near needs <= 0.80 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "red kettle (near)",
+            "anchor_object": "red kettle",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "red kettle",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "stove",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "cutting board",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "fruit bowl",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "cup",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 2,
+          "mentioned_present": 2,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_05_kitchen",
+      "domain": "kitchen",
+      "query": "Where is the red kettle and what is next to it?",
+      "blind": {
+        "answer": "The red kettle is near the notebook and the phone. The red kettle is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "red kettle",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "red kettle",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "red kettle",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "red kettle",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "red kettle here",
+            "anchor_object": "red kettle",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [
+            "red kettle"
+          ],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The red kettle is in this scene but it is occluded, so it is not shown in the UI. I will not place a label on it.",
+        "spatial_claims": [],
+        "spatial_checks": [],
+        "ui_schema": [],
+        "gate_decisions": [
+          {
+            "object": "red kettle",
+            "z_yes": 0.55,
+            "z_no": 0.45,
+            "margin": 0.1,
+            "recheck_triggered": true,
+            "recheck_result": "confirmed occluded",
+            "kept": false
+          },
+          {
+            "object": "stove",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "cutting board",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "fruit bowl",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "cup",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 0,
+          "spatial_correct": 0,
+          "mentioned_total": 1,
+          "mentioned_present": 1,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 0,
+          "ui_depth_layers": 0,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_06_kitchen",
+      "domain": "kitchen",
+      "query": "Where is the red kettle and what is next to it?",
+      "blind": {
+        "answer": "The red kettle is near the notebook and the phone. The red kettle is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "red kettle",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "red kettle",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "red kettle",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "subject red kettle not in scene"
+          },
+          {
+            "claim": {
+              "subject": "red kettle",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "subject red kettle not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "red kettle here",
+            "anchor_object": "red kettle",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.0,
+          "hallucination_rate": 1.0,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 0,
+          "hallucinated_objects": [
+            "red kettle",
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [
+            "red kettle"
+          ],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "There is no red kettle in this scene. I cannot point to it, and no UI element is shown for it.",
+        "spatial_claims": [],
+        "spatial_checks": [],
+        "ui_schema": [],
+        "gate_decisions": [
+          {
+            "object": "stove",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "cutting board",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "fruit bowl",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "cup",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 0,
+          "spatial_correct": 0,
+          "mentioned_total": 0,
+          "mentioned_present": 0,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 0,
+          "ui_depth_layers": 0,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_07_lab",
+      "domain": "lab bench",
+      "query": "Where is the microscope slide box and what is next to it?",
+      "blind": {
+        "answer": "The microscope slide box is near the notebook and the phone. The microscope slide box is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "microscope slide box",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "microscope slide box",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "microscope slide box here",
+            "anchor_object": "microscope slide box",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The microscope slide box is near the pipette rack, in the near depth layer. The pipette rack is the closest visible object to it.",
+        "spatial_claims": [
+          {
+            "subject": "microscope slide box",
+            "relation": "near",
+            "object": "pipette rack"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "near",
+              "object": "pipette rack"
+            },
+            "correct": true,
+            "reason": "euclidean 0.42 m, near needs <= 0.80 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "microscope slide box (near)",
+            "anchor_object": "microscope slide box",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "microscope slide box",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "microscope",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "pipette rack",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "beaker",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "centrifuge",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 2,
+          "mentioned_present": 2,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_08_lab",
+      "domain": "lab bench",
+      "query": "Where is the microscope slide box and what is next to it?",
+      "blind": {
+        "answer": "The microscope slide box is near the notebook and the phone. The microscope slide box is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "microscope slide box",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "microscope slide box",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "microscope slide box here",
+            "anchor_object": "microscope slide box",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The microscope slide box is near the test tube rack, in the near depth layer. The test tube rack is the closest visible object to it.",
+        "spatial_claims": [
+          {
+            "subject": "microscope slide box",
+            "relation": "near",
+            "object": "test tube rack"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "near",
+              "object": "test tube rack"
+            },
+            "correct": true,
+            "reason": "euclidean 0.42 m, near needs <= 0.80 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "microscope slide box (near)",
+            "anchor_object": "microscope slide box",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "microscope slide box",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "microscope",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "test tube rack",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "beaker",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "centrifuge",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 2,
+          "mentioned_present": 2,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_09_lab",
+      "domain": "lab bench",
+      "query": "Where is the microscope slide box and what is next to it?",
+      "blind": {
+        "answer": "The microscope slide box is near the notebook and the phone. The microscope slide box is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "microscope slide box",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "microscope slide box",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "microscope slide box here",
+            "anchor_object": "microscope slide box",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The microscope slide box is near the pipette rack, in the near depth layer. The pipette rack is the closest visible object to it. You are looking at the centrifuge.",
+        "spatial_claims": [
+          {
+            "subject": "microscope slide box",
+            "relation": "near",
+            "object": "pipette rack"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "microscope slide box",
+              "relation": "near",
+              "object": "pipette rack"
+            },
+            "correct": true,
+            "reason": "euclidean 0.42 m, near needs <= 0.80 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "microscope slide box (near)",
+            "anchor_object": "microscope slide box",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "microscope slide box",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "microscope",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "pipette rack",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "beaker",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "centrifuge",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 3,
+          "mentioned_present": 3,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_10_office",
+      "domain": "office",
+      "query": "Where is the laptop and what is next to it?",
+      "blind": {
+        "answer": "The laptop is near the notebook and the phone. The laptop is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "laptop",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "laptop",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "laptop here",
+            "anchor_object": "laptop",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The laptop is near the keyboard, in the near depth layer. The keyboard is the closest visible object to it.",
+        "spatial_claims": [
+          {
+            "subject": "laptop",
+            "relation": "near",
+            "object": "keyboard"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "near",
+              "object": "keyboard"
+            },
+            "correct": true,
+            "reason": "euclidean 0.17 m, near needs <= 0.80 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "laptop (near)",
+            "anchor_object": "laptop",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "laptop",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "monitor",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "keyboard",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "desk plant",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "office chair",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 2,
+          "mentioned_present": 2,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_11_office",
+      "domain": "office",
+      "query": "Where is the laptop and what is next to it?",
+      "blind": {
+        "answer": "The laptop is near the notebook and the phone. The laptop is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "laptop",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "laptop",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "laptop here",
+            "anchor_object": "laptop",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The laptop is near the keyboard, in the near depth layer. The keyboard is the closest visible object to it.",
+        "spatial_claims": [
+          {
+            "subject": "laptop",
+            "relation": "near",
+            "object": "keyboard"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "near",
+              "object": "keyboard"
+            },
+            "correct": true,
+            "reason": "euclidean 0.17 m, near needs <= 0.80 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "laptop (near)",
+            "anchor_object": "laptop",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "laptop",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "monitor",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "keyboard",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "desk lamp",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "office chair",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 2,
+          "mentioned_present": 2,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    },
+    {
+      "scene_id": "scene_12_office",
+      "domain": "office",
+      "query": "Where is the laptop and what is next to it?",
+      "blind": {
+        "answer": "The laptop is near the notebook and the phone. The laptop is on the left side, near the notebook.",
+        "spatial_claims": [
+          {
+            "subject": "laptop",
+            "relation": "near",
+            "object": "notebook"
+          },
+          {
+            "subject": "laptop",
+            "relation": "left",
+            "object": "notebook"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "near",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          },
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "left",
+              "object": "notebook"
+            },
+            "correct": false,
+            "reason": "object notebook not in scene"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "laptop here",
+            "anchor_object": "laptop",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [],
+        "scores": {
+          "groundedness": 0.333,
+          "hallucination_rate": 0.667,
+          "spatial_accuracy": 0.0,
+          "spatial_total": 2,
+          "spatial_correct": 0,
+          "mentioned_total": 3,
+          "mentioned_present": 1,
+          "hallucinated_objects": [
+            "notebook",
+            "phone"
+          ],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      },
+      "context": {
+        "answer": "The laptop is near the keyboard, in the near depth layer. The keyboard is the closest visible object to it. You are looking at the monitor.",
+        "spatial_claims": [
+          {
+            "subject": "laptop",
+            "relation": "near",
+            "object": "keyboard"
+          }
+        ],
+        "spatial_checks": [
+          {
+            "claim": {
+              "subject": "laptop",
+              "relation": "near",
+              "object": "keyboard"
+            },
+            "correct": true,
+            "reason": "euclidean 0.17 m, near needs <= 0.80 m"
+          }
+        ],
+        "ui_schema": [
+          {
+            "component": "label",
+            "text": "laptop (near)",
+            "anchor_object": "laptop",
+            "depth_layer": "near",
+            "priority": 1
+          }
+        ],
+        "gate_decisions": [
+          {
+            "object": "laptop",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "monitor",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "keyboard",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "desk plant",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          },
+          {
+            "object": "office chair",
+            "z_yes": 0.92,
+            "z_no": 0.08,
+            "margin": 0.84,
+            "recheck_triggered": false,
+            "recheck_result": "not needed, margin above threshold",
+            "kept": true
+          }
+        ],
+        "scores": {
+          "groundedness": 1.0,
+          "hallucination_rate": 0.0,
+          "spatial_accuracy": 1.0,
+          "spatial_total": 1,
+          "spatial_correct": 1,
+          "mentioned_total": 3,
+          "mentioned_present": 3,
+          "hallucinated_objects": [],
+          "schema_valid": true,
+          "ui_element_count": 1,
+          "ui_depth_layers": 1,
+          "ui_occluded_anchors": [],
+          "ui_absent_anchors": [],
+          "ui_clutter_score": 0.0
+        },
+        "backend": "mock",
+        "model": "mock-deterministic-v1"
+      }
+    }
+  ]
+}

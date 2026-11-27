@@ -1,0 +1,61 @@
+{
+  "scene_id": "scene_02_desk",
+  "domain": "desk",
+  "task": "Find the blue mug on the desk.",
+  "objects": [
+    {
+      "name": "blue mug",
+      "x": 0.7,
+      "y": 0.05,
+      "z": 2.2,
+      "distance_m": 2.31,
+      "depth_layer": "far",
+      "occluded": false,
+      "gaze_target": true
+    },
+    {
+      "name": "laptop",
+      "x": -0.3,
+      "y": 0.1,
+      "z": 0.5,
+      "distance_m": 0.59,
+      "depth_layer": "near",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "desk lamp",
+      "x": 0.45,
+      "y": 0.2,
+      "z": 0.6,
+      "distance_m": 0.78,
+      "depth_layer": "near",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "pen holder",
+      "x": -0.05,
+      "y": 0.05,
+      "z": 0.9,
+      "distance_m": 0.9,
+      "depth_layer": "mid",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "book stack",
+      "x": 0.3,
+      "y": 0.05,
+      "z": 1.2,
+      "distance_m": 1.24,
+      "depth_layer": "mid",
+      "occluded": false,
+      "gaze_target": false
+    }
+  ],
+  "user_query": "Where is the blue mug and what is next to it?",
+  "conversation_history": [],
+  "paired_with": "scene_01_desk",
+  "paired_change": "blue mug moved near to far"
+}

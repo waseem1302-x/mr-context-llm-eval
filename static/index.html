@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mr-context-llm-eval demo</title>
+<style>
+body { font-family: sans-serif; max-width: 900px; margin: 2em auto; padding: 0 1em; }
+.columns { display: flex; gap: 1em; }
+.col { flex: 1; border: 1px solid #999; padding: 1em; }
+h1 { font-size: 1.4em; }
+select, button { font-size: 1em; padding: 0.4em; }
+pre { white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>mr-context-llm-eval demo (not Unity)</h1>
+<p>Pick a scene. Blind gets the query only. Context-aware gets the query plus the scene JSON. Scores are computed in code, not by the model.</p>
+<label>Scene:
+<select id="scene"></select>
+</label>
+<button id="run">Run both</button>
+<div class="columns">
+<div class="col"><h2>Blind</h2><p id="blind-answer"></p><pre id="blind-scores"></pre></div>
+<div class="col"><h2>Context-aware</h2><p id="ctx-answer"></p><pre id="ctx-scores"></pre></div>
+</div>
+<script>
+async function loadScenes() {
+  const r = await fetch('/scenes');
+  const data = await r.json();
+  const sel = document.getElementById('scene');
+  data.scenes.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s.scene_id; o.textContent = s.scene_id + ' (' + s.domain + ')';
+    sel.appendChild(o);
+  });
+}
+async function runOne(sceneId, mode) {
+  const sceneResp = await fetch('/scenes/' + sceneId);
+  const scene = await sceneResp.json();
+  const r = await fetch('/evaluate', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({scene: scene, mode: mode, backend: 'mock'})
+  });
+  return await r.json();
+}
+document.getElementById('run').onclick = async () => {
+  const id = document.getElementById('scene').value;
+  const blind = await runOne(id, 'blind');
+  const ctx = await runOne(id, 'context');
+  document.getElementById('blind-answer').textContent = blind.answer;
+  document.getElementById('blind-scores').textContent = JSON.stringify(blind.scores, null, 2);
+  document.getElementById('ctx-answer').textContent = ctx.answer;
+  document.getElementById('ctx-scores').textContent = JSON.stringify(ctx.scores, null, 2);
+};
+loadScenes();
+</script>
+</body>
+</html>

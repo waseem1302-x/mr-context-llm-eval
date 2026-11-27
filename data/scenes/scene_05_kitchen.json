@@ -1,0 +1,61 @@
+{
+  "scene_id": "scene_05_kitchen",
+  "domain": "kitchen",
+  "task": "Find the red kettle in the kitchen.",
+  "objects": [
+    {
+      "name": "red kettle",
+      "x": 0.15,
+      "y": 0.1,
+      "z": 0.4,
+      "distance_m": 0.44,
+      "depth_layer": "near",
+      "occluded": true,
+      "gaze_target": true
+    },
+    {
+      "name": "stove",
+      "x": -0.2,
+      "y": 0.05,
+      "z": 0.55,
+      "distance_m": 0.59,
+      "depth_layer": "near",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "cutting board",
+      "x": 0.4,
+      "y": 0.05,
+      "z": 0.7,
+      "distance_m": 0.81,
+      "depth_layer": "mid",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "fruit bowl",
+      "x": -0.35,
+      "y": 0.1,
+      "z": 1.1,
+      "distance_m": 1.16,
+      "depth_layer": "mid",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "cup",
+      "x": -0.1,
+      "y": 0.05,
+      "z": 1.8,
+      "distance_m": 1.8,
+      "depth_layer": "far",
+      "occluded": false,
+      "gaze_target": false
+    }
+  ],
+  "user_query": "Where is the red kettle and what is next to it?",
+  "conversation_history": [],
+  "paired_with": "scene_04_kitchen",
+  "paired_change": "red kettle occluded"
+}

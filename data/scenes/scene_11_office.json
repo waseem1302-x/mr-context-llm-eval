@@ -1,0 +1,61 @@
+{
+  "scene_id": "scene_11_office",
+  "domain": "office",
+  "task": "Find the laptop in the office.",
+  "objects": [
+    {
+      "name": "laptop",
+      "x": 0.0,
+      "y": 0.1,
+      "z": 0.5,
+      "distance_m": 0.51,
+      "depth_layer": "near",
+      "occluded": false,
+      "gaze_target": true
+    },
+    {
+      "name": "monitor",
+      "x": -0.25,
+      "y": 0.25,
+      "z": 0.65,
+      "distance_m": 0.74,
+      "depth_layer": "near",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "keyboard",
+      "x": 0.05,
+      "y": 0.05,
+      "z": 0.35,
+      "distance_m": 0.36,
+      "depth_layer": "near",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "desk lamp",
+      "x": 0.45,
+      "y": 0.15,
+      "z": 1.0,
+      "distance_m": 1.11,
+      "depth_layer": "mid",
+      "occluded": false,
+      "gaze_target": false
+    },
+    {
+      "name": "office chair",
+      "x": -0.4,
+      "y": 0.05,
+      "z": 1.7,
+      "distance_m": 1.75,
+      "depth_layer": "far",
+      "occluded": false,
+      "gaze_target": false
+    }
+  ],
+  "user_query": "Where is the laptop and what is next to it?",
+  "conversation_history": [],
+  "paired_with": "scene_10_office",
+  "paired_change": "desk plant swapped for desk lamp"
+}
